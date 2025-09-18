@@ -177,8 +177,6 @@ img {
 .hero-copy { text-align: left; }
 
 @media (min-width: 992px) {
-    .hero-copy h1,
-    .hero-copy .subtitle,
     .hero-card .card-header h2,
     .hero-card .card-header p {
         white-space: nowrap;
@@ -228,6 +226,7 @@ img {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    margin-top: 0.75rem;
 }
 
 .btn {
@@ -293,9 +292,6 @@ img {
 }
 
 @media (min-width: 1200px) {
-    .hero-copy {
-        padding-right: 320px; /* reserve space for the visual */
-    }
     .hero-visual {
         display: block;
         position: absolute;
@@ -746,6 +742,10 @@ details[open] summary::after {
 
     .hero-card {
         order: -1;
+    }
+
+    .hero-copy {
+        margin-top: 1rem; /* avoid visual collision with hero-card */
     }
 
     .instructor {
