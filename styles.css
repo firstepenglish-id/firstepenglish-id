@@ -897,3 +897,55 @@ main > section:nth-of-type(4) .timeline-week {
     color: #fff;
     background: rgba(255,255,255,0.14);
 }
+
+
+/* TRY FIX OVER LAP */
+/* ==== FIX: cegah overlap hero di mobile ==== */
+@media (max-width: 960px) {
+    /* Lepas behavior sticky & skala paksa */
+    .fixed-stage.container {
+      position: static;        /* bukan sticky */
+      top: auto;
+      left: auto;
+      width: 100%;
+      height: auto;            /* biar mengikuti tinggi konten */
+      max-width: min(1120px, 92vw);
+      transform: none;         /* hilangkan scale kalkulasi zoom */
+      transform-origin: 0 0;
+      padding-left: 0;         /* biar ikut .container default */
+      padding-right: 0;
+      overflow: visible;       /* jangan di-clip */
+      z-index: auto;
+    }
+  
+    /* Hero nggak perlu mengunci 100vh di mobile */
+    .hero {
+      min-height: auto;
+      padding-top: 6rem;       /* sudah ada di CSS kamu, ini penguat */
+      padding-bottom: 3rem;
+    }
+  
+    /* Rapikan jarak antar blok */
+    .hero-grid {
+      grid-template-columns: 1fr; /* sudah ada, ini penguat */
+      gap: 1.25rem;               /* sedikit rapat biar manis */
+    }
+  
+    /* Pastikan kedua blok ikut flow normal */
+    .hero-card,
+    .hero-copy {
+      position: relative;
+      z-index: auto;
+    }
+  
+    /* Tambah jarak aman saat card di-order -1 */
+    .hero-card { margin-bottom: 1rem; }
+    .hero-copy { margin-top: 0.5rem; }
+  }
+  
+  /* BONUS: layar lebih kecil lagi */
+  @media (max-width: 600px) {
+    .hero-frame { padding: 1rem 1.1rem; }
+    .hero-copy h1 { font-size: clamp(1.8rem, 6vw + 1rem, 2.2rem); }
+  }
+  
